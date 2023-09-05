@@ -1,7 +1,7 @@
 {
-  "name": "open-ui",
+  "name": "complex-ui",
   "private": false,
-  "version": "1.0.0",
+  "version": "1.0.6",
   "author": "cqz",
   "scripts": {
     "lint:style": "stylelint --fix ./**/*.{css,less,vue}",
@@ -13,6 +13,7 @@
     "build:ui": "pnpm run type:src && pnpm --filter ./packages/** run build"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.26.2",
     "@types/node": "^20.5.3",
     "@typescript-eslint/eslint-plugin": "^6.4.1",
     "@typescript-eslint/parser": "^6.4.1",
