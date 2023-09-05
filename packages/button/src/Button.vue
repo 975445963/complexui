@@ -7,7 +7,7 @@ const props = withDefaults(
     text?: string;
   }>(),
   {
-    text: 'World',
+    text: 'World1',
   },
 );
 
