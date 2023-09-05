@@ -38,5 +38,8 @@
   },
   "dependencies": {
     "vue": "^3.3.4"
-  }
+  },
+  "workspaces": [
+    "packages"
+  ]
 }
