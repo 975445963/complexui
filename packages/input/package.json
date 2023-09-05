@@ -1,0 +1,39 @@
+{
+  "name": "@complexui/input",
+  "version": "1.0.1",
+  "description": "",
+  "keywords": [
+    "vue",
+    "ui",
+    "component library"
+  ],
+  "author": "cqz",
+  "license": "MIT",
+  "scripts": {
+    "build": "vite build",
+    "test": "echo test"
+  },
+  "main": "./dist/complexui-input.umd.js",
+  "module": "./dist/complexui-input.mjs",
+  "types": "./dist/src/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/complexui-input.umd.js",
+      "import": "./dist/complexui-input.mjs",
+      "types": "./dist/src/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "vue": ">=3.0.0"
+  },
+  "dependencies": {
+    "@complexui/shared": "workspace:^"
+  }
+}

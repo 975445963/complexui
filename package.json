@@ -1,0 +1,41 @@
+{
+  "name": "open-ui",
+  "private": false,
+  "version": "1.0.0",
+  "author": "cqz",
+  "scripts": {
+    "lint:style": "stylelint --fix ./**/*.{css,less,vue}",
+    "lint:script": "eslint --ext .js,.jsx,.ts,.tsx,.vue --fix ./",
+    "clean:type": "rimraf ./dist",
+    "type:src": "pnpm run clean:type && vue-tsc -p tsconfig.src.json --composite false --declaration --emitDeclarationOnly",
+    "mv-type": "tsx ./scripts/dts-mv.ts",
+    "type:node": "tsc -p tsconfig.node.json --noEmit --composite false",
+    "build:ui": "pnpm run type:src && pnpm --filter ./packages/** run build"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.3",
+    "@typescript-eslint/eslint-plugin": "^6.4.1",
+    "@typescript-eslint/parser": "^6.4.1",
+    "@vitejs/plugin-vue": "^4.3.3",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-define-config": "^1.23.0",
+    "less": "^4.2.0",
+    "lodash": "^4.17.21",
+    "postcss-less": "^6.0.0",
+    "prettier": "^3.0.2",
+    "rimraf": "^5.0.1",
+    "stylelint": "^15.10.3",
+    "stylelint-config-recommended-vue": "^1.5.0",
+    "stylelint-config-standard-less": "^1.0.0",
+    "stylelint-stylistic": "^0.4.3",
+    "tsx": "^3.12.7",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.9",
+    "vue-eslint-parser": "^9.3.1",
+    "vue-tsc": "^1.8.8"
+  },
+  "dependencies": {
+    "vue": "^3.3.4"
+  }
+}
