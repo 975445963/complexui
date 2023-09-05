@@ -1,3 +1,4 @@
 import Query from './Query.vue';
-
-export { Query };
+import {tableOption,tableOptionItem} from './interface/options'
+export type { tableOption,tableOptionItem };
+export { Query, };

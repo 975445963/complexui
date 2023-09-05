@@ -1,40 +1,34 @@
 <script setup lang="ts">
-import { hello } from '@complexui/shared';
-import { Button } from 'ant-design-vue';
-
-const props = withDefaults(
-  defineProps<{
-    text?: string;
-  }>(),
-  {
-    text: 'World1',
-  },
-);
-
-function clickHandler() {
-  hello(props.text);
-}
+import Input from './library/Input.vue'
+import {tableOption} from './interface/options'
+import {ref} from 'vue'
+const props = defineProps<{
+	options:tableOption
+}>()
+console.log(props.options)
+const queryParams:any = ref({}) 
+console.log(queryParams)
 </script>
 
 <template>
-  <Button
-    class="openx-button"
-    type="primary"
-    @click="clickHandler"
-  >
-    <slot />
-  </Button>
+<div class="complex-query-box">
+  <div class="complex-query-param">
+    <div v-for="(item,index) in options.params" :key="index" class="query-item">
+      <span>{{ item.fileName }}</span>
+      <Input v-if="item.type==='AInput'" v-model.item="queryParams[item.fileId as any]" :param="item"/>
+    </div>
+  </div>
+</div>
 </template>
 <style lang="less" scoped>
+.complex-query-box {
+  .complex-query-param{
+    display: flex;
 
-.openx-button {
-  div {
-    color: red;
-    transition:
-      color 0.15s ease-in-out,
-      background-color 0.15s ease-in-out,
-      border-color 0.15s ease-in-out,
-      box-shadow 0.15s ease-in-out;
+    .query-item {
+      width: 300px;
+      display: flex;
+    }
   }
 }
 </style>
