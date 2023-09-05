@@ -30,8 +30,7 @@
     "README.md"
   ],
   "dependencies": {
-    "@complexui/button": "workspace:^",
-    "@complexui/input": "workspace:^",
+    "@complexui/query": "workspace:^",
     "@complexui/shared": "workspace:^"
   }
 }

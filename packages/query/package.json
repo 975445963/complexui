@@ -1,5 +1,5 @@
 {
-  "name": "@complexui/input",
+  "name": "@complexui/query",
   "version": "1.0.6",
   "description": "",
   "keywords": [
@@ -13,13 +13,13 @@
     "build": "vite build",
     "test": "echo test"
   },
-  "main": "./dist/complexui-input.umd.js",
-  "module": "./dist/complexui-input.mjs",
+  "main": "./dist/complexui-query.umd.js",
+  "module": "./dist/complexui-query.mjs",
   "types": "./dist/src/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/complexui-input.umd.js",
-      "import": "./dist/complexui-input.mjs",
+      "require": "./dist/complexui-query.umd.js",
+      "import": "./dist/complexui-query.mjs",
       "types": "./dist/src/index.d.ts"
     }
   },
@@ -34,6 +34,7 @@
     "vue": ">=3.0.0"
   },
   "dependencies": {
-    "@complexui/shared": "workspace:^"
+    "@complexui/shared": "workspace:^",
+    "ant-design-vue": "^4.0.1"
   }
 }

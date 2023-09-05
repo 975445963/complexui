@@ -1,14 +1,12 @@
 <script setup lang="ts">
 // demo/src/App.vue
 import {
-  Button,
-  Input,
+  Query
 } from '@complexui/ui';
 </script>
 
 <template>
   <div>
-    <Button>1111</Button>
-    <Input />
+    <Query>1111</Query>
   </div>
 </template>
