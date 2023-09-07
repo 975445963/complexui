@@ -9,7 +9,13 @@ const options:tableOption = {
     {
       type:'AInput',
       fileId:'companyName',
-      fileName:'企业名称'
+      fileName:'企业名称',
+      defaultValue:'1'
+    },
+    {
+      type:'AInputSearch',
+      fileId:'companyName2',
+      fileName:'企业名称',
     }
   ],
   extraParams:[]
@@ -18,6 +24,6 @@ const options:tableOption = {
 
 <template>
   <div>
-    <Query :options="options">1111</Query>
+    <Query :options="options"></Query>
   </div>
 </template>

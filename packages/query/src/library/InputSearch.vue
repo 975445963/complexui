@@ -1,5 +1,5 @@
 <script  setup lang="ts">
-import {Input} from 'ant-design-vue'
+import {InputSearch} from 'ant-design-vue'
 import {ref,watch} from 'vue'
 import { tableOptionItem } from '@complexui/ui'
 const props = defineProps<{
@@ -9,7 +9,7 @@ const props = defineProps<{
 const paramValue =ref(props.modelValue)
 let emit = defineEmits(["update:modelValue"]);
 watch(() => props.modelValue, (newValue) => {
-  paramValue.value = newValue
+    paramValue.value = newValue
 })
 
 function updateValue(event: any) {
@@ -19,5 +19,5 @@ function updateValue(event: any) {
 
 </script>
 <template>
-  <Input :value="paramValue" :placeholder="param.placeholder?param.placeholder:`请输入${param.fileName}`" @input="updateValue" v-bind="$attrs" />
+  <InputSearch :value="paramValue" :placeholder="param.placeholder?param.placeholder:`请输入${param.fileName}`" @input="updateValue" v-bind="$attrs" />
 </template>

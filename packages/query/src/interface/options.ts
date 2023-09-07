@@ -6,5 +6,8 @@ export interface tableOptionItem {
   type:string,
   fileId:string,
   fileName:string,
-  options?:Array<any>
+  defaultValue?:any,
+  options?:Array<any>,
+  placeholder?:string,
+  attrs?:Object
 }
