@@ -13,9 +13,34 @@ const options:tableOption = {
       defaultValue:'1'
     },
     {
+      type:'AInputNumber',
+      fileId:'companyName4',
+      fileName:'企业名称'
+    },
+    {
       type:'AInputSearch',
       fileId:'companyName2',
       fileName:'企业名称',
+    },
+    {
+      type:'ARangePicker',
+      fileId:'dateTime',
+      fileName:'时间',
+      timeField:['startTime','endTime'],
+      attrs:{
+        valueFormat:'YYYY-MM-DD HH:mm:ss'
+      }
+    },
+    {
+      type:'ASelect',
+      fileId:'companyName3',
+      fileName:'企业名称',
+      options:[
+        {
+          value:'1',
+          label:'1'
+        }
+      ],
     }
   ],
   extraParams:[]

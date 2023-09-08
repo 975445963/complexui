@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "@complexui/shared": "workspace:^",
-    "ant-design-vue": "^4.0.1"
+    "ant-design-vue": "^4.0.1",
+    "dayjs": "^1.11.9"
   }
 }

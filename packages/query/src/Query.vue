@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import {Button,Space} from 'ant-design-vue'
 import Input from './library/Input.vue'
+import InputNumber from './library/InputNumber.vue'
 import InputSearch from './library/InputSearch.vue'
+import Select from './library/Select.vue'
+import RangePicker from './library/RangePicker.vue'
 import {tableOption} from './interface/options'
 import {ref} from 'vue'
 const props = defineProps<{
@@ -13,7 +16,17 @@ const emit = defineEmits(['query','reset'])
 function init() {
   const params:any= {}
   options.params.forEach(item=>{
-    params[item.fileId] = item.defaultValue?item.defaultValue:null
+    if(item.type === 'ASelect' && item.attrs?.mode && ['multiple','tags'].includes(item.attrs.mode)) {
+      params[item.fileId] = item.defaultValue?item.defaultValue:[]
+    }else if(item.type === 'ARangePicker') {
+      if(item.timeField && item.timeField.length === 2) {
+        params[item.timeField[0]] = item.defaultValue?.length?item.defaultValue[0]:null
+        params[item.timeField[1]] = item.defaultValue?.length?item.defaultValue[1]:null
+      }
+      params[item.fileId] = item.defaultValue?item.defaultValue:[]
+    }else {
+      params[item.fileId] = item.defaultValue?item.defaultValue:null
+    }
   })
   return params
 }
@@ -41,14 +54,39 @@ function reset() {
         v-bind="item.attrs"
         @keydown.enter.stop="search"
       />
+      <InputNumber 
+        v-else-if="item.type==='AInputNumber'"
+        v-model="queryParams[item.fileId]"
+        :param="item"
+        class="complex-query-input" 
+        v-bind="item.attrs"
+        @keydown.enter.stop="search"
+      />
       <InputSearch
-        v-if="item.type==='AInputSearch'"
+        v-else-if="item.type==='AInputSearch'"
         v-model="queryParams[item.fileId]"
         :param="item"
         class="complex-query-input" 
         v-bind="item.attrs"
         @search="search"
       />
+      <Select
+        v-else-if="item.type==='ASelect'"
+        v-model="queryParams[item.fileId]"
+        :param="item"
+        class="complex-query-input" 
+        v-bind="item.attrs"
+        @change="search"
+      />
+      <RangePicker
+        v-else-if="item.type==='ARangePicker'"
+        v-model="queryParams[item.fileId]"
+        :param="item"
+        class="complex-query-input" 
+        v-bind="item.attrs"
+        @change="search"
+      />
+      
     </div>
     <div class="complex-query-param">
       <Space>

@@ -9,5 +9,6 @@ export interface tableOptionItem {
   defaultValue?:any,
   options?:Array<any>,
   placeholder?:string,
-  attrs?:Object
+  timeField?:Array<string>
+  attrs?:any
 }
