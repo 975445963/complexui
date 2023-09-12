@@ -5,7 +5,7 @@ import InputNumber from './library/InputNumber.vue'
 import InputSearch from './library/InputSearch.vue'
 import Select from './library/Select.vue'
 import RangePicker from './library/RangePicker.vue'
-import {tableOption} from './interface/options'
+import {tableOption,tableOptionItem} from './interface/options'
 import {ref} from 'vue'
 const props = defineProps<{
 	options:tableOption
@@ -31,13 +31,29 @@ function init() {
   return params
 }
 function search() {
-  console.log(queryParams.value)
+  console.log('search',queryParams.value)
   emit("query",queryParams.value);
 }
 function reset() {
   let defaultParams:any = init()
   queryParams.value = defaultParams
   emit("reset",queryParams);
+}
+function rangePickerChange(date:Array<any>,item:tableOptionItem) {
+  if(date && date.length === 2) {
+    queryParams.value[item.fileId] = date
+    if(item.timeField?.length) {
+      queryParams.value[item.timeField[0]]=date[0]
+      queryParams.value[item.timeField[1]]=date[1]
+    }
+  }else {
+    queryParams.value[item.fileId] = []
+    if(item.timeField?.length) {
+      queryParams.value[item.timeField[0]]= null
+      queryParams.value[item.timeField[1]]= null
+    }
+  }
+ 
 }
 </script>
 
@@ -80,11 +96,11 @@ function reset() {
       />
       <RangePicker
         v-else-if="item.type==='ARangePicker'"
-        v-model="queryParams[item.fileId]"
+        :model-value="item.fileId"
+        @update:modelValue="rangePickerChange($event,item)"
         :param="item"
-        class="complex-query-input" 
+        class="complex-query-input complex-query-input2" 
         v-bind="item.attrs"
-        @change="search"
       />
       
     </div>
@@ -112,6 +128,9 @@ function reset() {
       }
       .complex-query-input {
         width: 200px;
+      }
+      .complex-query-input2 {
+        width:250px;
       }
     }
   }

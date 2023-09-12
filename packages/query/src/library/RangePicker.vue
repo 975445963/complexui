@@ -13,7 +13,8 @@ watch(() => props.modelValue, (newValue) => {
   paramValue.value = newValue
 })
 
-function updateValue(dataValue: any) {
+function updateValue(dataValue: Array<any>) {
+  console.log('dataValue',dataValue)
   paramValue.value =  dataValue
   emit("update:modelValue", dataValue);
 }
