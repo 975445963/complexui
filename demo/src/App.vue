@@ -10,7 +10,7 @@ const options:tableOption = {
       type:'AInput',
       fileId:'companyName8',
       fileName:'企业名称1',
-      slot:'companyName8'
+      slotName:'companyName8'
     },
     {
       type:'AInput',
@@ -88,9 +88,9 @@ const options:tableOption = {
 <template>
   <div class="table-query-box">
     <Query :options="options">
-      <span slot="companyName8">
-        <Button>123</Button>
-      </span>
+      <template #companyName8>
+    	  <button>123</button>
+      </template>
     </Query>
   </div>
 </template>

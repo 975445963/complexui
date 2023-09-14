@@ -88,8 +88,8 @@ function rangePickerChange(date:Array<any>,item:tableOptionItem) {
       <div v-for="item in options.params" :key="item.fileId" class="complex-query-item">
         <span class="complex-query-label">{{ item.fileName }}：</span>
         <slot
-            v-if="item.slot"
-            :name="item.slot"
+          v-if="item.slotName"
+          :name="item.slotName"
         />
         <Input 
           v-else-if="item.type==='AInput'"
