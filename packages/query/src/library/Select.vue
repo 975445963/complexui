@@ -4,14 +4,14 @@ import {ref,watch} from 'vue'
 import { tableOptionItem } from '@complexui/ui'
 const props = defineProps<{
 	param:tableOptionItem,
-  modelValue:any,
+  modelValue:any
 }>()
 const paramValue =ref(props.modelValue)
 let emit = defineEmits(["update:modelValue"]);
 watch(() => props.modelValue, (newValue) => {
   paramValue.value = newValue
 })
-function updateValue(data: any) {
+function updateValue(data:any) {
   paramValue.value =  data
   emit("update:modelValue",data);
 }
@@ -24,5 +24,7 @@ function updateValue(data: any) {
     @change="updateValue" 
     v-bind="$attrs" 
     :options="param.options"
+    :style="{width:param.width}"
+    allowClear
   />
 </template>

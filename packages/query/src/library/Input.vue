@@ -19,5 +19,11 @@ function updateValue(event: any) {
 
 </script>
 <template>
-  <Input :value="paramValue" :placeholder="param.placeholder?param.placeholder:`请输入${param.fileName}`" @input="updateValue" v-bind="$attrs" />
+  <Input 
+    :value="paramValue" 
+    :placeholder="param.placeholder?param.placeholder:`请输入${param.fileName}`" 
+    @input="updateValue" 
+    v-bind="$attrs" 
+    :style="{width:param.width}"
+  />
 </template>

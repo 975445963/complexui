@@ -8,20 +8,35 @@ const props = defineProps<{
   modelValue:any,
 }>()
 const paramValue =ref(props.modelValue)
-let emit = defineEmits(["update:modelValue"]);
+let emit = defineEmits(["update:modelValue",'clear']);
 watch(() => props.modelValue, (newValue) => {
   paramValue.value = newValue
 })
 
 function updateValue(dataValue: Array<any>) {
   console.log('dataValue',dataValue)
-  paramValue.value =  dataValue
-  emit("update:modelValue", dataValue);
-}
-function dateForamt(value:any) {
-  return value?null:dayjs(value)
+  const date = dataValue
+  if(props.param.timeFormat &&  Array.isArray(props.param.timeFormat)) {
+    date[0] = dayjs(dataValue[0]).format(props.param.timeFormat[0])
+    date[1] = dayjs(dataValue[1]).format(props.param.timeFormat[1])
+  }else if(props.param.timeFormat &&  typeof props.param.timeFormat  === "string") {
+    date[0] = dayjs(dataValue[0]).format(props.param.timeFormat)
+    date[1] = dayjs(dataValue[1]).format(props.param.timeFormat)
+  }
+  paramValue.value =  date
+  emit("update:modelValue", dataValue)
+  if(!dataValue) {
+    emit("clear")
+  }
 }
 </script>
 <template>
-  <RangePicker :value="paramValue" @change="updateValue" :valueFormat="param.attrs?.valueFormat?param.attrs?.valueFormat:'YYYY-MM-DD'"  v-bind="$attrs" />
+  <RangePicker 
+    :value="paramValue" 
+    @calendarChange="updateValue" 
+    :valueFormat="param.attrs?.valueFormat?param.attrs?.valueFormat:'YYYY-MM-DD'"
+    :placeholder="param.attrs?.placeholder?param.attrs?.placeholder:['开始时间','结束时间']"
+    v-bind="$attrs"
+    :style="{width:param.width}"
+  />
 </template>

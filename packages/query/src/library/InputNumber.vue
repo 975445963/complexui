@@ -19,5 +19,11 @@ function updateValue(dataValue: any) {
 
 </script>
 <template>
-  <InputNumber :value="paramValue" :placeholder="param.placeholder?param.placeholder:`请输入${param.fileName}`" @change="updateValue" v-bind="$attrs" />
+  <InputNumber 
+    :value="paramValue" 
+    :placeholder="param.placeholder?param.placeholder:`请输入${param.fileName}`" 
+    @change="updateValue" 
+    v-bind="$attrs" 
+    :style="{width:param.width}"
+  />
 </template>
