@@ -11,6 +11,7 @@ export interface tableOptionItem {
   placeholder?:string,
   timeField?:Array<string>,
   timeFormat?:Array<string> | string,
+  slot?:string,
   width?:string,
   attrs?:any
 }

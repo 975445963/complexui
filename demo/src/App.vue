@@ -6,6 +6,12 @@ import {
 } from '@complexui/ui';
 const options:tableOption = {
   params:[
+  {
+      type:'AInput',
+      fileId:'companyName8',
+      fileName:'企业名称1',
+      slot:'companyName8'
+    },
     {
       type:'AInput',
       fileId:'companyName',
@@ -28,6 +34,7 @@ const options:tableOption = {
       fileName:'时间',
       timeField:['startTime','endTime'],
       timeFormat:['YYYY-MM-DD 00:00:00','YYYY-MM-DD 23:59:59'],
+      width:'310px',
       attrs:{
         placeholder:['1','2'],
         showTime:true
@@ -52,13 +59,39 @@ const options:tableOption = {
       fileName:'企业名称5',
       defaultValue:'1'
     },
+    {
+      type:'ASelect',
+      fileId:'companyName6',
+      fileName:'企业名称4',
+      options:[
+        {
+          value:'1',
+          label:'1'
+        }
+      ],
+    },
+    {
+      type:'ASelect',
+      fileId:'companyName7',
+      fileName:'企业名称4',
+      options:[
+        {
+          value:'1',
+          label:'1'
+        }
+      ],
+    }
   ]
 }
 </script>
 
 <template>
   <div class="table-query-box">
-    <Query :options="options"></Query>
+    <Query :options="options">
+      <span slot="companyName8">
+        <Button>123</Button>
+      </span>
+    </Query>
   </div>
 </template>
 <style lang="less" scoped>
