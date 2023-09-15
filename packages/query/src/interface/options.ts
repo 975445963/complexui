@@ -3,9 +3,9 @@ export interface tableOption {
   extraParams?:Array<tableOptionItem>,
 }
 export interface tableOptionItem {
-  type:string,
+  type?:string,
   fileId:string,
-  fileName:string,
+  fileName?:string,
   defaultValue?:any,
   options?:Array<any>,
   placeholder?:string,

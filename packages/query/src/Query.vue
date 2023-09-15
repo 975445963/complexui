@@ -8,17 +8,24 @@ import RangePicker from './library/RangePicker.vue'
 import {tableOption,tableOptionItem} from './interface/options'
 import { FilterOutlined } from '@ant-design/icons-vue'
 import {ref} from 'vue'
+import   {isEmptyObject } from '@complexui/shared'
 const filter = ref(false)
 const props = defineProps<{
-	options:tableOption
+	options:tableOption,
+  defaultParams?:object
 }>()
 const options = props.options
+const defaultParams = props.defaultParams
 let queryParams:any = ref(init()) 
 const emit = defineEmits(['query','reset'])
 //初始化
 function init() {
-  const params:any= {}
-  options.params.forEach(item=>{
+  let params:any= {}
+  debugger
+  if(!isEmptyObject(defaultParams)) {
+    params = defaultParams
+  }else {
+    options.params.forEach(item=>{
     if(item.type === 'ASelect' && item.attrs?.mode && ['multiple','tags'].includes(item.attrs.mode)) {
       params[item.fileId] = item.defaultValue?item.defaultValue:[]
     }else if(item.type === 'ARangePicker') {
@@ -44,6 +51,8 @@ function init() {
       params[item.fileId] = item.defaultValue?item.defaultValue:undefined
     }
   })
+  }
+
   return params
 }
 //日期范围日期面板关闭后查询
@@ -79,6 +88,20 @@ function rangePickerChange(date:Array<any>,item:tableOptionItem) {
   }
  
 }
+function setValue(params:object | string | number | any,paramsKey:string) {
+  console.log('params',params)
+  // 存在paramsKey时修改单个查询参数
+  if(paramsKey) {
+    queryParams.value[paramsKey] = params
+  }else {
+    // 修改所有查询参数
+    queryParams.value = params
+  }
+  
+}
+defineExpose({
+  setValue
+});
 </script>
 
 <template>
@@ -86,10 +109,11 @@ function rangePickerChange(date:Array<any>,item:tableOptionItem) {
   <div class="complex-query-box">
     <div class="complex-query-param">
       <div v-for="item in options.params" :key="item.fileId" class="complex-query-item">
-        <span class="complex-query-label">{{ item.fileName }}：</span>
+        <span class="complex-query-label" v-if="item.fileName">{{ item.fileName }}：</span>
         <slot
           v-if="item.slotName"
           :name="item.slotName"
+          :params="queryParams"
         />
         <Input 
           v-else-if="item.type==='AInput'"
@@ -139,6 +163,9 @@ function rangePickerChange(date:Array<any>,item:tableOptionItem) {
         <Space>
           <Button @click="search" type="primary">查询</Button>
           <Button @click="reset">重置</Button>
+          <slot
+            name="extra-btn"
+          />
         </Space>
       </div>
     </div>

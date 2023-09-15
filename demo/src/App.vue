@@ -4,12 +4,12 @@ import {
   Query,
   tableOption
 } from '@complexui/ui';
+import { ref,onMounted } from 'vue'
 const options:tableOption = {
   params:[
   {
       type:'AInput',
       fileId:'companyName8',
-      fileName:'企业名称1',
       slotName:'companyName8'
     },
     {
@@ -83,13 +83,25 @@ const options:tableOption = {
     }
   ]
 }
+const query = ref()
+let defaultParams = {
+  companyName:3
+}
+function show (params:any) {
+  console.log(params.companyName)
+  query.value.setValue(2,'companyName')
+}
+
 </script>
 
 <template>
   <div class="table-query-box">
-    <Query :options="options">
-      <template #companyName8>
-    	  <button>123</button>
+    <Query :options="options" ref="query" :defaultParams="defaultParams">
+      <template v-slot:companyName8="{params}">
+    	  <button @click="show(params)">123</button>
+      </template>
+      <template v-slot:extra-btn>
+    	  <button>extra</button>
       </template>
     </Query>
   </div>
