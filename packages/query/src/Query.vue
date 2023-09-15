@@ -21,7 +21,6 @@ const emit = defineEmits(['query','reset'])
 //初始化
 function init() {
   let params:any= {}
-  debugger
   if(!isEmptyObject(defaultParams)) {
     params = defaultParams
   }else {
@@ -88,6 +87,7 @@ function rangePickerChange(date:Array<any>,item:tableOptionItem) {
   }
  
 }
+//修改查询参数方法
 function setValue(params:object | string | number | any,paramsKey:string) {
   console.log('params',params)
   // 存在paramsKey时修改单个查询参数

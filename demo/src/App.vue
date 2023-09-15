@@ -4,7 +4,7 @@ import {
   Query,
   tableOption
 } from '@complexui/ui';
-import { ref,onMounted } from 'vue'
+import { ref } from 'vue'
 const options:tableOption = {
   params:[
   {
