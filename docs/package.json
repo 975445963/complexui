@@ -1,12 +1,17 @@
 {
   "name": "@openxui/docs",
-  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "echo dev",
-    "build": "echo build"
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs"
   },
-  "dependencies": {
-  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
+    "vitepress": "1.0.0-rc.14"
   }
 }

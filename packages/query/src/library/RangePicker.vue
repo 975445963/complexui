@@ -10,24 +10,29 @@ const props = defineProps<{
 const paramValue =ref(props.modelValue)
 let emit = defineEmits(["update:modelValue",'clear']);
 watch(() => props.modelValue, (newValue) => {
+  console.log('newValue',newValue)
   paramValue.value = newValue
 })
 
 function updateValue(dataValue: Array<any>) {
   console.log('dataValue',dataValue)
   const date = dataValue
-  if(props.param.timeFormat &&  Array.isArray(props.param.timeFormat)) {
-    date[0] = dayjs(dataValue[0]).format(props.param.timeFormat[0])
-    date[1] = dayjs(dataValue[1]).format(props.param.timeFormat[1])
-  }else if(props.param.timeFormat &&  typeof props.param.timeFormat  === "string") {
-    date[0] = dayjs(dataValue[0]).format(props.param.timeFormat)
-    date[1] = dayjs(dataValue[1]).format(props.param.timeFormat)
-  }
-  paramValue.value =  date
-  emit("update:modelValue", dataValue)
   if(!dataValue) {
+    paramValue.value =  null
+    emit("update:modelValue", dataValue)
     emit("clear")
+  }else {
+    if(props.param.timeFormat &&  Array.isArray(props.param.timeFormat)) {
+      date[0] = dataValue[0]?dayjs(dataValue[0]).format(props.param.timeFormat[0]):dataValue[0]
+      date[1] = dataValue[1]?dayjs(dataValue[1]).format(props.param.timeFormat[1]):dataValue[1]
+    }else if(props.param.timeFormat &&  typeof props.param.timeFormat  === "string") {
+      date[0] = dataValue[0]?dayjs(dataValue[0]).format(props.param.timeFormat):dataValue[0]
+      date[1] = dataValue[1]?dayjs(dataValue[1]).format(props.param.timeFormat):dataValue[1]
+    }
+    paramValue.value =  date
+    emit("update:modelValue", dataValue)
   }
+
 }
 </script>
 <template>

@@ -72,6 +72,7 @@ function reset() {
   emit("reset",queryParams);
 }
 function rangePickerChange(date:Array<any>,item:tableOptionItem) {
+  console.log('date',date)
   if(date && date.length === 2) {
     queryParams.value[item.fileId] = date
     if(item.timeField?.length) {
@@ -149,7 +150,7 @@ defineExpose({
         />
         <RangePicker
           v-else-if="item.type==='ARangePicker'"
-          :model-value="item.fileId"
+          v-model="queryParams[item.fileId]"
           @update:modelValue="rangePickerChange($event,item)"
           @openChange="openChange"
           @clear="search"

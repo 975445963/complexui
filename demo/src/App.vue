@@ -37,7 +37,8 @@ const options:tableOption = {
       width:'310px',
       attrs:{
         placeholder:['1','2'],
-        showTime:true
+        showTime:true,
+        valueFormat:'YYYY-MM-DD HH:mm:ss',
       }
     },
     {
