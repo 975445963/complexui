@@ -1,17 +1,20 @@
 {
-  "name": "@openxui/docs",
+  "name": "@complexui/docs",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs"
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "vitepress": "1.0.0-rc.14"
+    "vitepress": "^1.0.0-rc.22"
+  },
+  "dependencies": {
+    "@complexui/ui": "workspace:^"
   }
 }

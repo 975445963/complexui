@@ -1,0 +1,62 @@
+{
+  "hash": "a54d70b3",
+  "browserHash": "f246b3b2",
+  "optimized": {
+    "vue": {
+      "src": "../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "file": "vue.js",
+      "fileHash": "f00acd1f",
+      "needsInterop": false
+    },
+    "vitepress > @vue/devtools-api": {
+      "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+@vue+devtools-api@6.5.1/node_modules/@vue/devtools-api/lib/esm/index.js",
+      "file": "vitepress___@vue_devtools-api.js",
+      "fileHash": "e19dd028",
+      "needsInterop": false
+    },
+    "@theme/index": {
+      "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+vitepress@1.0.0-rc.22_@algolia+client-search@4.20.0_@types+node@20.5.3_oiaf5o7uqeye56eql6hvo4ym4u/node_modules/vitepress/dist/client/theme-default/index.js",
+      "file": "@theme_index.js",
+      "fileHash": "616596d9",
+      "needsInterop": false
+    },
+    "ant-design-vue": {
+      "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+ant-design-vue@4.0.1_vue@3.3.4/node_modules/ant-design-vue/es/index.js",
+      "file": "ant-design-vue.js",
+      "fileHash": "1cfa7bc0",
+      "needsInterop": false
+    },
+    "lodash": {
+      "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+lodash@4.17.21/node_modules/lodash/lodash.js",
+      "file": "lodash.js",
+      "fileHash": "b7ce18b6",
+      "needsInterop": true
+    },
+    "dayjs": {
+      "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+dayjs@1.11.9/node_modules/dayjs/dayjs.min.js",
+      "file": "dayjs.js",
+      "fileHash": "ce330730",
+      "needsInterop": true
+    },
+    "@ant-design/icons-vue": {
+      "src": "../../../../node_modules/.pnpm/registry.npmmirror.com+@ant-design+icons-vue@7.0.0_vue@3.3.4/node_modules/@ant-design/icons-vue/es/index.js",
+      "file": "@ant-design_icons-vue.js",
+      "fileHash": "3724c58d",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-GPA5RAIE": {
+      "file": "chunk-GPA5RAIE.js"
+    },
+    "chunk-C5D2HYV6": {
+      "file": "chunk-C5D2HYV6.js"
+    },
+    "chunk-G3CMYKT2": {
+      "file": "chunk-G3CMYKT2.js"
+    },
+    "chunk-5WWUZCGV": {
+      "file": "chunk-5WWUZCGV.js"
+    }
+  }
+}
